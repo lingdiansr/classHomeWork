@@ -10,3 +10,19 @@
 样例输出 Copy
 0:20:45
 */
+#include<stdio.h>
+
+int main(int argc, const char* argv[]) {
+    int second;
+    int time[3];
+    scanf("%d", &second);
+    int i = 0;
+    do
+    {
+        time[i++] = second % 60;
+        second /= 60;
+    } while (i<3);
+    printf("%d:%d:%d", time[2], time[1], time[0]);
+
+    return 0;
+}
