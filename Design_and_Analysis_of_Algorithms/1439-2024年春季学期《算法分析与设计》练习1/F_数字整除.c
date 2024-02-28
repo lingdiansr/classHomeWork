@@ -22,46 +22,30 @@
 0
 1
 0
-*/
-#include <stdio.h>
-int is17s(double num)
-{
-    if (num>-100&&num<100)
-    {
-        if (((int)num)%17!=0)
-        {
-            return 0;
-        }else{
-            return 1;
-        }
-        
-    }
-    else
-    {
-        return is17s(num / 10 - ((num % 10) * 5));
-    }
-    
-    // if (is17s(num / 10 - (num % 10 * 5)) == 1)
-    // {
-    //     return 1;
-    // }else
-    // {
-    //     return 0;
-    // }
-    
-}
+*/ 
+#include<stdio.h>
+
 int main(int argc, const char *argv[])
 {
-    double num;
-    while (scanf("%lf",&num))
+    char num[101];
+    int sum;
+    while (scanf("%s", &num)&&num[0]!='0')
     {
-        printf("%lf", num);
-        if (num == 0)
+        sum = 0;
+        for (int i = 0; num[i] != '\0'; i++)
         {
-            break;
+            sum = sum * 10 + num[i] - '0';
+            sum = sum % 17;
         }
-        printf("%d\n", is17s(num));
+        if (sum % 17 != 0)
+        {
+            printf("0\n");
+        }
+        else
+        {
+            printf("1\n");
+        }
     }
-    
+
     return 0;
 }
