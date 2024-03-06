@@ -35,4 +35,116 @@ B 和 D 之间的最后一句话是"What does hehehei mean?".
 E 和 F 之间的最后一句话是"I want to hehehehehe yah". 最后第一段和最后一段话是“止于呵呵”的(注意最后一段对话是以呵呵的变种结束),因此 比例是 50%。
 
 */
+#include<stdio.h>
+#include<stdbool.h>
+#include<string.h>
+bool ishehe(char word[]){
+    bool flag = true;
+    for (int i = 0; word[i]!='\0'; i+=2)
+    {
+        if (word[i] != 'h'|| word[i+1]!='e')
+        {
+            flag = false;
+        }
+        
+    }
+    return flag;
+}
+char *chuli(char msg[])
+{
+    char *rez;
+    int i;
+    for (i = 0; msg[i] != '\0'; i++)
+    {
+        if (msg[i] >= 'A' && msg[i] <= 'Z')
+        {
+            rez[i] = msg[i] + 32;
+        }
+        else if (msg[i] >= 'a' && msg[i] <= 'z')
+        {
+            rez[i] = msg[i];
+        }
+        else
+        {
+            rez[i] = ' ';
+        }
+    }
+    rez[i] = '\0';
+    return rez;
+}
+bool havehehe(char msg[]){
+    char *massage = chuli(msg);
+    bool flag = false;
+    int wordStart = 0, wordEnd = 0;
+    for (int i = 0; massage[i+1]!='\0'; i++)
+    {
+        if (massage[i]==' ')
+        {
+            wordEnd = i - 1;
+            if ((wordEnd - wordStart + 1) % 2 == 0)
+            {
+                char *word;
+                strncpy(word, massage + wordStart, wordEnd - wordStart + 1);
+                flag = ishehe(word);
+            }
+            wordStart = i + 1;
+        }               
+    }
+}
+int main(int argc, const char* argv[]) {
+    char per1,per2,tmp;
+    int dia[26][26];
+    char massage[101][1001];
+    int i = 0;
+    double totalCount = 0, heheCount = 0,rate;
+    while (~scanf("%c",&per1))
+    {
+        if (per1=='\n')
+        {
+            break;
+        }
+        
+        scanf("->%c: ", &per2);
+        if (per2 < per1)
+        {
+            tmp = per1;
+            per1 = per2;
+            per2 = tmp;
+        }
+        dia[per1 - 65][per2 - 65] = i;
+        gets(massage[i]);
+        i++;
+    }
+    for (int i = 0; i < 26; i++)
+    {
+        for (int j = 0; j < 26; j++)
+        {
+            if (i!=j)
+            {
+                if (dia[i][j]>0)
+                {
+                    totalCount++;
+                    if (ishehe(massage[dia[i][j]]))
+                    {
+                        heheCount++;
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
+    rate = heheCount / totalCount;
+    printf("%.0lf%%", rate*100);
+    // if (ishehe("hehhhe"))
+    // {
+    //     printf("true");
+    // }else{
+    //     printf("false");
+    // }
+    
+    return 0;
+}
 

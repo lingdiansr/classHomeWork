@@ -64,21 +64,24 @@ public class Main {
             power = 0;
             score = homeScore = guestScore = 0;
             startTime = sdf.parse(timeStrings[1]).getTime() / 1000;
-            timeStrings = sc.nextLine().split(" ");
             do {
+                timeStrings = sc.nextLine().split(" ");
                 nowTime = sdf.parse(timeStrings[1]).getTime() / 1000;
                 power += (nowTime - startTime) * (getNum(homeScore) + getNum(guestScore));
                 startTime = nowTime;
+                if (timeStrings[0].equals("END")) {
+                    break;
+                }
                 if (timeStrings[2].equals("home")) {
                     homeScore += Integer.parseInt(timeStrings[3]);
                 } else {
                     guestScore += Integer.parseInt(timeStrings[3]);
                 }
-                timeStrings = sc.nextLine().split(" ");
+                // timeStrings = sc.nextLine().split(" ");
             } while (!timeStrings[0].equals("END"));
             // timeStrings = sc.nextLine().split(" ");
-            nowTime = sdf.parse(timeStrings[1]).getTime() / 1000;
-            power += (nowTime - startTime) * (getNum(homeScore) + getNum(guestScore));
+            // nowTime = sdf.parse(timeStrings[1]).getTime() / 1000;
+            // power += (nowTime - startTime) * (getNum(homeScore) + getNum(guestScore));
             System.out.println("Case " + (++count) + ": " + power);
         }
         sc.close();
