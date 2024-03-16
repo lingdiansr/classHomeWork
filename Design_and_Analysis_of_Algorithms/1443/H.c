@@ -51,3 +51,26 @@ int main()
     }
     return 0;
 }
+// int countWays(int n)
+// {
+//     if (n <= 0)
+//         return 0;
+//     if (n == 1)
+//         return 1;
+//     else if (n == 2)
+//         return 2;
+//     else if (n == 3)
+//         return 4;
+//     else
+//     {
+//         return countWays(n - 1) + countWays(n - 2) + countWays(n - 3);
+//     }
+// }
+// #include<stdio.h>
+
+// int main(int argc, const char* argv[]) {
+//     int n;
+//     scanf("%d", &n);
+//     printf("%d", countWays(n));
+//     return 0;
+// }

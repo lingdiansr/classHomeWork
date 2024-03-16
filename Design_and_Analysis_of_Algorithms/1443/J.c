@@ -13,10 +13,24 @@ Kimi很想知道这个神秘数列中所蕴含的规律，你能否编写一个�
 样例输入 Copy
 8
 样例输出 Copy
-3382*/
+3382*/ \
 #include<stdio.h>
 
-int main(int argc, const char* argv[]) {
-    
+int main()
+{
+    int n;
+    long long nums[50];
+    scanf("%d", &n);
+    nums[0] = 0;
+    nums[1] = 1;
+    nums[2] = 1;
+
+    for (int i = 3; i <= n; i++)
+    {
+        nums[i] = 5 * nums[i - 2] + 2 * nums[i - 1] + 1;
+    }
+
+    printf("%lld", nums[n]);
+
     return 0;
 }
