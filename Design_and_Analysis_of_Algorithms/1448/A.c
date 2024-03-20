@@ -12,9 +12,38 @@
 3 4 1
 样例输出 Copy
 3*/
-#include<stdio.h>
-
-int main(int argc, const char* argv[]) {
+#include <stdio.h>
+#include <stdlib.h>
+int main(int argc, const char *argv[])
+{
+    int n, q, count ;
+    int *s, *t;
+    while (~scanf("%d", &n))
+    {
+        count = 0;
+        s = (int *)malloc(sizeof(int) * n);
+        for (int i = 0; i < n; i++)
+        {
+            scanf("%d", &s[i]);
+        }
+        scanf("%d", &q);
+        t = (int *)malloc(sizeof(int) * q);
+        for (int i = 0; i < q; i++)
+        {
+            scanf("%d", &t[i]);
+        }
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < q; j++)
+            {
+                if (s[i] == t[j])
+                {
+                    count++;
+                }
+            }
+        }
+        printf("%d\n", count);
+    }
     
     return 0;
 }
