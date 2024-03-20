@@ -1,22 +1,41 @@
 /*题目描述
-给你一个整数 n，请你判断该整数是否是 2 的幂次方。如果是，返回 0 ；否则，返回 1 。
-如果存在一个整数 x 使得n == 2x ，则认为 n 是 2 的幂次方。
-请用递归编写一个程序来判断。
-【友情提醒：请使用递归来实现】
-
+使用递归编写一个程序，求一个正整数n的所有划分个数。
+例如，输入3，输出3；输入4，输出5。
 输入
-多组输入，每组输入一个非负整数，每组占一行
+多组输入，每一组是一个正整数n。
 输出
-输出结果，每个结果占一行
+输出划分数。
 样例输入 Copy
-1
-16
 3
 4
-5
 样例输出 Copy
-0
-0
-1
-0
-100*/
+3
+5*/
+#include <stdio.h>
+
+int recursion(int n, int m)
+{
+    if (n == 1 || m == 1)
+    {
+        return 1;
+    }
+    if (n < m)
+    {
+        return recursion(n, n);
+    }
+    if (n == m)
+    {
+        return 1 + recursion(n, m - 1);
+    }
+    return recursion(n, m - 1) + recursion(n - m, m);
+}
+
+int main()
+{
+    int n;
+    while (~scanf("%d", &n))
+    {
+        printf("%d\n", recursion(n, n));
+    }
+    return 0;
+}
