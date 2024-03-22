@@ -41,29 +41,26 @@ int main(int argc, const char *argv[])
 {
     int n, q, count;
     int *s, *t;
-    while (~scanf("%d", &n))
+    count = 0;
+    scanf("%d", &n);
+    s = (int *)malloc(sizeof(int) * n);
+    for (int i = 0; i < n; i++)
     {
-        count = 0;
-        s = (int *)malloc(sizeof(int) * n);
-        for (int i = 0; i < n; i++)
-        {
-            scanf("%d", &s[i]);
-        }
-        scanf("%d", &q);
-        t = (int *)malloc(sizeof(int) * q);
-        for (int i = 0; i < q; i++)
-        {
-            scanf("%d", &t[i]);
-        }
-        for (int i = 0; i < q; i++)
-        {
-            if (search(s, n, t[i]) != -1)
-            {
-                count++;
-            }
-        }
-        printf("%d\n", count);
+        scanf("%d", &s[i]);
     }
-
+    scanf("%d", &q);
+    t = (int *)malloc(sizeof(int) * q);
+    for (int i = 0; i < q; i++)
+    {
+        scanf("%d", &t[i]);
+    }
+    for (int i = 0; i < q; i++)
+    {
+        if (search(s, n, t[i]) != -1)
+        {
+            count++;
+        }
+    }
+    printf("%d\n", count);
     return 0;
 }
