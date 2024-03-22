@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>课外拓展练习二</title>
+</head>
+
+<body>
+    <div id="box">
+        <img src="image.jpg" alt="banner" />
+        <div id="storyBanner">
+            <span>曾子避席</span>
+            <span>千里送鹅毛</span>
+            <span>三顾茅庐</span>
+            <span>车胤囊萤</span>
+            <span>李士谦乐善好施</span>
+        </div>
+        <div>
+            <h2 style="text-align: center;">中国传统道德故事锦集</h2>
+            <p>中华民族传统美德,是指中国五千年历史流传下来，具有影响、可以继承，并得到不断创新发展，有益于下代的优秀道德遗产。概括起来就是：中华民族优秀的品质、优良的民族精神、崇高的民族气节、高尚的民族情感以及良好的民族习惯的总和。
+            </p>
+        </div>
+        <div id="storyList">
+            <ul>
+                <li>【程门立雪】--说的是尊师重教的故事</li>
+                <li>【七岁之师】--说的是谦虚礼貌的故事</li>
+                <li>【林则徐禁烟】--说的是爱国爱民的故事</li>
+            </ul>
+            <ul >
+                <li>【子路借米】--说的是尊老爱幼的故事</li>
+                <li>【孔融让梨】--说的是公序良俗的故事</li>
+                <li>【铁杵磨成针】--说的是勤学的故事</li>
+            </ul>
+        </div>
+        <hr>
+    </div>
+</body>
+<style>
+    body {
+        max-width: max-content;
+        margin: 0 auto;
+    }
+
+    #box {
+        width: 788px;
+        display: flex;
+        flex-direction: column;
+        /* float: ; */
+        /* justify-content: center; */
+        /* align-items: center; */
+    }
+
+    img {
+        height: fit-content;
+    }
+
+    #storyBanner {
+        display: flex;
+        height: max-content;
+        width: inherit;
+        background-color: red;
+        align-items: center;
+        justify-content: center;
+    }
+    span{
+        color: #fff;
+        margin: 5px 20px;
+    }
+    p{
+        text-indent: 2em;
+    }
+    #storyList{
+        display: flex;
+        justify-content: center;
+    }
+    ul{
+        width: max-content;
+        margin-right: 75px;
+    }
+    li{
+        height: 30px;
+        font-size: small;
+    }
+</style>
+
+</html>
