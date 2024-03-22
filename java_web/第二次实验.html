@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第二次实验</title>
+</head>
+
+<body>
+    <form action="" method="post">
+        <table>
+            <caption>
+                <h1>通用会议注册表</h1>
+            </caption>
+            <tr>
+                <td>
+                    <span>参会者名称</span>
+                    <input type="text" name="nameInput" id="nameText">
+                </td>
+                <td>
+
+                </td>
+                <td>
+                    <span class="shortSpan">职务</span>
+                    <input type="text" name="jobInput" id="jobText" placeholder="请输入您的职务">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <span>工作单位</span>
+                    <input type="text" name="comInput" id="comText" style="width: 557px;">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>电话</span>
+                    <input type="text" name="telInput" id="telText">
+                </td>
+                <td>
+                    <span class="shortSpan">传真</span>
+                    <input type="text" name="chuanInput" id="chuanText">
+                </td>
+                <td>
+                    <span class="shortSpan">手机</span>
+                    <input type="text" name="phoneInput" id="phoneText">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <span>通讯地址</span>
+                    <input type="text" name="addressInput" id="addressText" style="width: 348px;">
+                </td>
+                <td>
+                    <span class="shortSpan">邮编</span>
+                    <input type="text" name="postInput" id="postText">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>E-mail</span>
+                    <input type="text" name="emailInput" id="emailText">
+                </td>
+                <td>
+
+                </td>
+                <td>
+                    <span class="shortSpan">国家</span>
+                    <select name="country" id="country">
+                        <option value="0" selected="selected">中国</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>省份</span>
+                    <select name="province" id="province">
+                        <option value="0" selected="selected">湖南省</option>
+                    </select>
+                </td>
+                <td>
+
+                </td>
+                <td>
+                    <span class="shortSpan">城市</span>
+                    <select name="city" id="city">
+                        <option value="0" selected="selected">长沙市</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">会议费标准（人民币）</td>
+            </tr>
+            <tr>
+                <td>时间/身份</td>
+                <td>
+                    <input type="date" name="before" id="before" value="2023-3-10">
+                    <span>之前注册</span>
+                </td>
+                <td>
+                    <input type="date" name="after" id="after" value="2021-3-20">
+                    <span>之后注册</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    会员
+                </td>
+                <td>
+                    <input type="radio" name="vip" id="vip1">
+                    <span>1500元</span>
+                </td>
+                <td>
+                    <input type="radio" name="vip" id="vip2">
+                    <span>1800元</span>
+                </td>
+            </tr>
+            <tr>
+                <td>非会员</td>
+                <td>
+                    <input type="radio" name="no-vip" id="no-vip1">
+                    <span>1800元</span>
+                </td>
+                <td>
+                    <input type="radio" name="no-vip" id="no-vip2">
+                    <span>2000元</span>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td style="text-align: center;">
+                    <input type="submit" value="提交">
+                    <input type="reset" value="重置">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+<style>
+    table {
+        border: 1px solid black;
+    }
+
+    td {
+        width: auto;
+    }
+
+    span {
+        display: inline-block;
+        width: 10ch;
+    }
+
+    .shortSpan {
+        width: auto;
+    }
+
+    select {
+        width: 150px;
+    }
+
+    input[type="text"] {
+        width: 150px;
+    }
+</style>
+
+</html>
