@@ -27,7 +27,6 @@ void swap(int num[], int x, int y)
 }
 int pra(int num[], int p, int q)
 {
-    srand((unsigned int)time(0));
     int x = rand() % (q - p + 1) + p;
     int i = p;
     swap(num, x, p);
@@ -44,25 +43,19 @@ int pra(int num[], int p, int q)
 int qselect(int num[], int p, int q, int k)
 {
     if (p == q)
-    {
         return num[p];
-    }
-    if (p < q)
-    {
-        int i = pra(num, p, q);
-        int j = i - p + 1;
-        if (k <= j)
-        {
-            qselect(num, p, i, k);
-        }
-        else
-        {
-            qselect(num, i + 1, q, k - j);
-        }
-    }
+    int i = pra(num, p, q);
+    int j = i - p + 1;
+    if (k == j)
+        return num[i];
+    else if (k < j)
+        return qselect(num, p, i - 1, k);
+    else
+        return qselect(num, i + 1, q, k - j);
 }
 int main(int argc, const char *argv[])
 {
+    srand((unsigned int)time(0));
     int *num, n;
     while (~scanf("%d", &n))
     {
