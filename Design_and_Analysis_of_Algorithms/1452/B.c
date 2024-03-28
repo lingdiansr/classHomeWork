@@ -10,42 +10,47 @@
 样例输出 Copy
 1 3 4 5 6 8
 2 5 8 12 42*/
-#include<stdio.h>
-#include<stdlib.h>
-#include<time.h>
-void swap(int num[],int x,int y){
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+void swap(int num[], int x, int y)
+{
     int tmp = num[x];
     num[x] = num[y];
     num[y] = tmp;
 }
-int pra(int num[],int p,int q){
+int pra(int num[], int p, int q)
+{
     srand((unsigned int)time(0));
     int x = rand() % (q - p + 1) + p;
-    int i = p, j = p + 1;
-    for ( ; j <= q; j++)
+    // int x = p;
+    int i = p;
+    swap(num, x, p);
+    for (int j = p + 1; j <= q; j++)
     {
-        if (num[j]<num[x])
+        if (num[j] <= num[p])
         {
             swap(num, ++i, j);
         }
     }
-    swap(num, x, i);
+    swap(num, p, i);
     return i;
 }
-void qs(int num[],int p,int q){
-    if (q>p)
+void qs(int num[], int p, int q)
+{
+    if (q > p)
     {
         int r = pra(num, p, q);
         qs(num, p, r - 1);
         qs(num, r + 1, q);
     }
-    
 }
-int main(int argc, const char* argv[]) {
+int main(int argc, const char *argv[])
+{
     int num, *numArr;
-    while (~scanf("%d",&num))
+    while (~scanf("%d", &num))
     {
-        int p, q;
+        // int p, q;
         numArr = (int *)malloc(sizeof(int) * num);
         for (int i = 0; i < num; i++)
         {
@@ -54,7 +59,7 @@ int main(int argc, const char* argv[]) {
             // int x = rand() % (q - p + 1) + p;
             // printf("%d", x);
         }
-        qs(numArr, 0, num-1);
+        qs(numArr, 0, num - 1);
         for (int i = 0; i < num; i++)
         {
             printf("%d ", numArr[i]);
