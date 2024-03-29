@@ -13,6 +13,7 @@ import java.util.Stack;
 输出人民币格式。
 
 样例输入 Copy
+
 151121.15
 样例输出 Copy
 人民币拾伍万壹仟壹佰贰拾壹元壹角伍分
@@ -42,7 +43,7 @@ public class Main {
         if (integer == 0) {
             ch += "零";
         } else {
-            
+
         }
         return ch;
     }

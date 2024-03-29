@@ -83,7 +83,7 @@ void printChinese(double num)
 
 int main()
 {
-    system("chcp 65001");
+    // system("chcp 65001");
     double num;
     while (~scanf("%lf", &num))
     {
