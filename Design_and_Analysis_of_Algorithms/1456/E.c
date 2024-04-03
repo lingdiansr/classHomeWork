@@ -10,129 +10,129 @@
 1234 5678
 样例输出 Copy
 7006652
-*/ 
+*/ \
 #include<stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-char *result = '\0';
-int pr = 1;
+int judge = 0;
 
-void getFill(char *a, char *b, int ia, int ja, int ib, int jb, int tbool, int move)
+char *add(char *X, char *Y)
 {
-    int r, m, n, s, j, t;
-    char *stack;
-    m = a[ia] - 48; 
-    if (tbool)
-    {                                                    
-        r = (jb - ib > ja - ia) ? (jb - ib) : (ja - ia); 
-        stack = (char *)malloc(r + 4);                   
-        for (r = j = 0, s = jb; s >= ib; r++, s--)
-        {                                
-            n = b[s] - 48;               
-            stack[r] = (m * n + j) % 10; 
-            j = (m * n + j) / 10;        
-        }                                
-        if (j)
-        {                 
-            stack[r] = j; 
-            r++;          
-        }
-        
-        for (r--; r >= 0; r--, pr++) 
-            result[pr] = stack[r];   
-        free(stack);
-        
-        for (move = move + pr; pr < move; pr++) 
-            result[pr] = '\0';                  
+    int i = strlen(X) - 1;
+    int j = strlen(Y) - 1;
+    int add = 0;
+    char sum[100] = "";
+
+    while (i >= 0 || j >= 0 || add != 0)
+    {
+        if (i >= 0)
+            add += X[i--] - '0';
+        if (j >= 0)
+            add += Y[j--] - '0';
+
+        char temp[2];
+        sprintf(temp, "%d", add % 10);
+        strcat(sum, temp);
+        add /= 10;
     }
-    else
-    { 
-        r = pr - move - 1;
-        for (s = jb, j = 0; s >= ib; r--, s--)
-        {
-            n = b[s] - 48;
-            t = m * n + j + result[r];
-            result[r] = t % 10;
-            j = t / 10;
-        }
-        for (; j; r--)
-        {
-            t = j + result[r];
-            result[r] = t % 10;
-            j = t / 10;
-        }
-    }
+
+    char *result = (char *)malloc(strlen(sum) + 1);
+    strcpy(result, strrev(sum));
+
+    return result;
 }
 
-int get(char *a, char *b, int ia, int ja, int ib, int jb, int t, int move)
+char *largeInt(char *X, char *Y)
 {
-    int m, n, s, j;
+    if (strlen(X) == 0 || strlen(Y) == 0)
+    {
+        char *result = (char *)malloc(2);
+        strcpy(result, "0");
+        return result;
+    }
 
-    if (ia == ja)
+    if (X[0] == '-')
     {
-        getFill(a, b, ia, ja, ib, jb, t, move);
-        return 1;
+        X = X + 1;
+        judge++;
     }
-    else if (ib == jb)
+
+    if (Y[0] == '-')
     {
-        getFill(b, a, ib, jb, ia, ja, t, move);
-        return 1;
+        Y = Y + 1;
+        judge++;
     }
-    else
-    {                                                 
-        m = (ja + ia) / 2;                            
-        n = (jb + ib) / 2;                            
-        s = ja - m;                                   
-        j = jb - n;                                   
-        get(a, b, ia, m, ib, n, t, s + j + move);     
-        get(a, b, ia, m, n + 1, jb, 0, s + move);     
-        get(a, b, m + 1, ja, ib, n, 0, j + move);     
-        get(a, b, m + 1, ja, n + 1, jb, 0, 0 + move); 
+
+    int x = strlen(X);
+    int y = strlen(Y);
+
+    if ((x <= 1 || y <= 1) && (x + y < 5))
+    {
+        int n = atoi(X);
+        int m = atoi(Y);
+        char *result = (char *)malloc(20);
+        sprintf(result, "%d", n * m);
+        return result;
     }
-    return 0;
+
+    char A[50], B[50], C[50], D[50];
+    strncpy(A, X, x - x / 2);
+    A[x - x / 2] = '\0';
+    strncpy(B, X + x - x / 2, x / 2);
+    B[x / 2] = '\0';
+    strncpy(C, Y, y - y / 2);
+    C[y - y / 2] = '\0';
+    strncpy(D, Y + y - y / 2, y / 2);
+    D[y / 2] = '\0';
+
+    char *AC = largeInt(A, C);
+    char *BD = largeInt(B, D);
+    char *AD = largeInt(A, D);
+    char *BC = largeInt(B, C);
+
+    int xy0 = x / 2 + y / 2;
+    int x0 = x / 2;
+    int y0 = y / 2;
+
+    for (int i = 0; i < xy0; i++)
+        strcat(AC, "0");
+    for (int i = 0; i < x0; i++)
+        strcat(AD, "0");
+    for (int i = 0; i < y0; i++)
+        strcat(BC, "0");
+
+    char *sum = add(AC, AD);
+    sum = add(sum, BC);
+    sum = add(sum, BD);
+
+    free(AC);
+    free(BD);
+    free(AD);
+    free(BC);
+
+    return sum;
 }
-void mutiply(int a[],int b[],int *flag){
-    
-}
+
 int main()
 {
-    char *a, *b;
-    int n, flag;
-
-    a = (char *)malloc(1000); 
-    b = (char *)malloc(1000);
-    while (~scanf("%s %s", a, b))
+    char X[100], Y[100];
+    while (~scanf("%s %s", X, Y))
     {
-        result = (char *)malloc(strlen(a) + strlen(b) + 2);
-        flag = pr = 1;
-        result[0] = '\0';
 
-        if (a[0] == '-' && b[0] == '-')
-            get(a, b, 1, strlen(a) - 1, 1, strlen(b) - 1, 1, 0);
-        if (a[0] == '-' && b[0] != '-')
+        char *sum = largeInt(X, Y);
+
+        if (judge % 2 != 0)
         {
-            flag = 0;
-            get(a, b, 1, strlen(a) - 1, 0, strlen(b) - 1, 1, 0);
+            char *temp = (char *)malloc(strlen(sum) + 2);
+            temp[0] = '-';
+            strcpy(temp + 1, sum);
+            sum = temp;
         }
-        if (a[0] != '-' && b[0] == '-')
-        {
-            flag = 0;
-            get(a, b, 0, strlen(a) - 1, 1, strlen(b) - 1, 1, 0);
-        }
-        
-        if (a[0] != '-' && b[0] != '-')
-            get(a, b, 0, strlen(a) - 1, 0, strlen(b) - 1, 1, 0);
-        if (!flag)
-            printf("-");
-        if (result[0])
-            printf("%d", result[0]);
-        for (n = 1; n < pr; n++)
-            printf("%d", result[n]);
-        printf("\n");
-        free(a);
-        free(b);
-        free(result);
+
+        printf("%s\n", sum);
+
+        free(sum);
     }
     
     return 0;
