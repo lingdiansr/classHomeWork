@@ -22,6 +22,7 @@ void swap(int num[], int x, int y)
 }
 int pra(int num[], int p, int q)
 {
+    srand((unsigned)time(NULL));
     int x = rand() % (q - p + 1) + p;
     int i = p;
     swap(num, x, p);
@@ -51,21 +52,47 @@ int qselect(int num[], int p, int q, int k)
 
 int main(int argc, const char *argv[])
 {
+
+    time_t tt;
+    struct tm *st;
+    time(&tt);
+    printf("%ld\n", tt);
+    // int set = time(&timep);
+    // ctime(&now_time)
+    // printf("当前时间为：%s", asctime(gmtime(&timep)));
+    // printf("%ld\n", tt);
     int num[1000];
     int k, n;
     while (~scanf("%d", &k))
     {
 
-        n = 0;
-        while (~scanf("%d", &num[n]))
+        // n = 0;
+        // while (~scanf("%d", &num[n]))
+        // {
+        //     n++;
+        //     if (getchar() == '\n')
+        //     {
+        //         break;
+        //     }
+        // }
+        // printf("当前时间为：%s", asctime(gmtime(&timep)));
+        printf("%ld\n", tt);
+
+        scanf("%d", &num[0]);
+        for (n = 1; getchar() != '\n'; n++)
         {
-            n++;
-            if (getchar() == '\n')
-            {
-                break;
-            }
+            scanf("%d", &num[n]);
+            // if ('\n'==getchar())
+            // {
+            //     break;
+            // }
         }
-        printf("%d\n", qselect(num, 0, n - 1, n - k + 1));
+        // printf("当前时间为：%s", asctime(gmtime(&timep)));
+        printf("%ld\n", tt);
+
+        // printf("%d", asctime(gmtime(&timep)));
+        // printf("%d\n", n);
+        // printf("%d\n", qselect(num, 0, n-1, n - k + 1));
     }
 
     return 0;
