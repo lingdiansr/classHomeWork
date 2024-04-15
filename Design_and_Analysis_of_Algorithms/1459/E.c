@@ -32,28 +32,16 @@ int main()
     scanf("%d %d", &M, &N);
 
     int **grid = (int **)malloc(M * sizeof(int *));
-    for (int i = 0; i < M; i++)
-    {
-        grid[i] = (int *)malloc(N * sizeof(int));
-    }
-
-    for (int i = 0; i < M; i++)
-    {
-        for (int j = 0; j < N; j++)
-        {
-            scanf("%d", &grid[i][j]);
-        }
-    }
-
     int **dp = (int **)malloc(M * sizeof(int *));
     for (int i = 0; i < M; i++)
     {
+        grid[i] = (int *)malloc(N * sizeof(int));
         dp[i] = (int *)malloc(N * sizeof(int));
-    }
-
-    for (int j = 0; j < N; j++)
-    {
-        dp[0][j] = grid[0][j];
+        for (int j = 0; j < N; j++)
+        {
+            scanf("%d", &grid[i][j]);
+            dp[0][j] = grid[0][j];
+        }
     }
 
     for (int i = 1; i < M; i++)
@@ -61,24 +49,54 @@ int main()
         for (int j = 0; j < N; j++)
         {
             dp[i][j] = grid[i][j];
-            if (j > 0)
+            if (j == 0)
             {
-                dp[i][j] += max(dp[i - 1][j - 1], dp[i][j - 1]);
+                dp[i][j] += max(dp[i - 1][j], dp[i - 1][j + 1]);
             }
-            if (j < N - 1)
+            else if (j == N - 1)
             {
-                dp[i][j] = max(dp[i][j], dp[i - 1][j + 1]);
+                dp[i][j] += max(dp[i - 1][j - 1], dp[i - 1][j]);
             }
+            else
+            {
+                dp[i][j] += max(dp[i - 1][j - 1], max(dp[i - 1][j], dp[i - 1][j + 1]));
+            }
+            // dp[i][j] = grid[i][j];
+            // if (j > 0)
+            // {
+            //     dp[i][j] += max(dp[i - 1][j], dp[i - 1][j - 1]);
+            // }
+            // if (j < N - 1)
+            // {
+            //     dp[i][j] += max(dp[i - 1][j], dp[i - 1][j + 1]);
+            // }
         }
     }
 
-    int max_coins = 0;
-    for (int j = 0; j < N; j++)
+    int maxCoins = dp[M - 1][0];
+    for (int i = 1; i < N; i++)
     {
-        max_coins = max(max_coins, dp[M - 1][j]);
+        maxCoins = max(maxCoins, dp[M - 1][i]);
     }
 
-    printf("%d\n", max_coins);
+    // for (int i = 0; i < M; i++)
+    // {
+    //     for (int j = 0; j < N; j++)
+    //     {
+    //         printf("%d ", dp[i][j]);
+    //     }
+    //     printf("\n");
+    // }
+    
+    printf("%d\n", maxCoins);
+
+    for (int i = 0; i < M; i++)
+    {
+        free(grid[i]);
+        free(dp[i]);
+    }
+    free(grid);
+    free(dp);
 
     return 0;
 }
