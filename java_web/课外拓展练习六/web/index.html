@@ -1,10 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>水果选择界面</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-$END$
+<h1>选择喜欢的水果</h1>
+<div id="fruit-selector">
+    <div class="list-container">
+        <div class="list available">
+            <h3>可选项</h3>
+            <ul id="available-list">
+                <li data-fruit="apple">苹果</li>
+                <li data-fruit="banana">香蕉</li>
+                <li data-fruit="watermelon">西瓜</li>
+                <li data-fruit="strawberry">草莓</li>
+                <li data-fruit="pineapple">菠萝</li>
+                <li data-fruit="mango">芒果</li>
+            </ul>
+        </div>
+        <div id="button-container">
+            <button id="move-right">&gt</button>
+            <button id="move-left">&lt</button>
+        </div>
+        <div class="list selected">
+            <h3>已选项</h3>
+            <ul id="selected-list">
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="selected-fruits-display">
+    <h3>您选择的水果</h3>
+    <div id="selected-fruits">
+    </div>
+</div>
+<script src="script.js"></script>
 </body>
 </html>

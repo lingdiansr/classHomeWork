@@ -13,10 +13,11 @@ class Main {
             }
             int[][] m = new int[n][n];
             matrixChain(m, matrix);
-            System.out.println(m[1][n-1]);
+            System.out.println(m[1][n - 1]);
         }
         sc.close();
     }
+    1
 
     public static void matrixChain(int[][] matrix, int[] p) {
         int n = p.length - 1;
