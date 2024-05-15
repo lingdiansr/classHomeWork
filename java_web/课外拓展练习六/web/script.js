@@ -49,6 +49,9 @@
         }
     });
 
+var node = document.getElementById()
+node.setAttribute('id', 'myForm');
+node.setAttribute('method', 'post');
 
 
 
