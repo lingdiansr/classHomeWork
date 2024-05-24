@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "title": "飞驰人生2",
+        "director": "韩寒",
+        "release_date": "2024-3",
+        "cast": "沈腾",
+        "genre": "运动喜剧"
+    },
+    {
+        "id": 2,
+        "title": "红毯先生",
+        "director": "宁浩",
+        "release_date": "2024-4",
+        "cast": "刘德华, 林秀晶, 宁浩",
+        "genre": "讽刺"
+    },
+    {
+        "id": 3,
+        "title": "传说",
+        "director": "唐季礼",
+        "release_date": "2024-2",
+        "cast": "成龙, 张艺兴, 古力娜扎",
+        "genre": "动作冒险"
+    },
+    {
+        "id": 4,
+        "title": "熊出没：逆转时空",
+        "director": "林辉达",
+        "release_date": "2024-5",
+        "cast": "谭小, 张伟, 张秉君",
+        "genre": "科幻喜剧"
+    },
+    {
+        "id": 5,
+        "title": "第二十条",
+        "director": "张艺谋",
+        "release_date": "2024-1",
+        "cast": "雷佳音, 马丽, 赵丽颖",
+        "genre": "喜剧剧情"
+    }
+]

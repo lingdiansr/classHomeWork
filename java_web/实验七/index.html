@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>电影查询程序</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <h1>电影查询程序</h1>
+  <button id="loadDataBtn">读取数据</button>
+  <div id="searchBox" style="display:none;">  <!-- div容器1 -->
+    <input type="text" id="searchInput" placeholder="搜索电影..." oninput="searchmovies()">
+<!--    <input type="button" value="搜索"  onclick="searchmovies()">-->
+    <button onclick="searchmovies()">搜索</button>
+    <button onclick="sortmovies()">按上映时间排序</button>
+  </div>
+  <div class="table-container"><!-- div容器2 -->
+    <div class="background-rectangle"></div>
+    <table id="movieTable" style="display: none;">
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>电影名称</th>
+          <th>导演</th>
+          <th>主演</th>
+          <th>上映时间</th>
+          <th>类型</th>
+        </tr>
+      </thead>
+      <tbody id="movieTableBody">
+      </tbody>
+    </table>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
