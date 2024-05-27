@@ -2,6 +2,7 @@ package F;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Scanner;
 
 /**
@@ -30,12 +31,14 @@ public class Main {
                 int b = sc.nextInt();
                 HashSet<Integer> aSet = null;
                 HashSet<Integer> bSet = null;
-                for (HashSet<Integer> set : sets) {
-                    if (set.contains(a)) {
-                        aSet = set;
+                Iterator<HashSet<Integer>> iterator = sets.iterator();
+                while (iterator.hasNext()) {
+                    HashSet<Integer> next = iterator.next();
+                    if (next.contains(a)) {
+                        aSet = next;
                     }
-                    if (set.contains(b)) {
-                        bSet = set;
+                    if (next.contains(b)) {
+                        bSet = next;
                     }
                 }
                 sets.remove(aSet);
