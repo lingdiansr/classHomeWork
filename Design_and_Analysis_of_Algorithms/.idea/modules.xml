@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/1452/1452.iml" filepath="$PROJECT_DIR$/1452/1452.iml" />
       <module fileurl="file://$PROJECT_DIR$/1464/1464.iml" filepath="$PROJECT_DIR$/1464/1464.iml" />
+      <module fileurl="file://$PROJECT_DIR$/1467/1467.iml" filepath="$PROJECT_DIR$/1467/1467.iml" />
+      <module fileurl="file://$PROJECT_DIR$/1489/1489.iml" filepath="$PROJECT_DIR$/1489/1489.iml" />
       <module fileurl="file://$PROJECT_DIR$/Design_and_Analysis_of_Algorithms.iml" filepath="$PROJECT_DIR$/Design_and_Analysis_of_Algorithms.iml" />
     </modules>
   </component>
